@@ -1,0 +1,13 @@
+spring:
+  # ???????????minio?????
+  servlet:
+    multipart:
+      max-file-size: 500MB
+      max-request-size: 500MB
+
+minio:
+  endpoint: http://118.25.143.28:9000
+  accessKey:  minioadmin
+  secretKey:  minioadmin
+  bucketName: community-web
+
