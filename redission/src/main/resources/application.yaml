@@ -1,0 +1,15 @@
+spring:
+  data:
+    redis:
+      # ???
+      database: 0
+      # ??
+      host: 192.168.139.130
+      # ??
+      port: 6379
+      # ??
+      password: 114514
+      # ???
+      timeout: 5s
+      # ????
+      connect-timeout: 5s
