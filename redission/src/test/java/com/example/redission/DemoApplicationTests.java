@@ -24,40 +24,42 @@ public class DemoApplicationTests {
     @Test
     public void test() throws InterruptedException {
         RLock testLock = this.redissonClient.getLock("testLock");
-        new Thread(() ->{
-            try {
+//        new Thread(() ->{
+//            try {
+//                testLock.tryLock(1000, TimeUnit.SECONDS);
+//                Thread.sleep(100000000);
+//            } catch (InterruptedException e) {
+//                throw new RuntimeException(e);
+//            }
+//        }, "thread1");
+//        new Thread(()->{
+//            try {
+//                testLock.tryLock(1000000, TimeUnit.SECONDS);
+//                System.out.println(testLock.remainTimeToLive());
+//            } catch (InterruptedException e) {
+//                throw new RuntimeException(e);
+//            }
+//        }, "thread2").start();
+//        Thread.sleep(500);
 
-                testLock.tryLock(1000, TimeUnit.SECONDS);
-                Thread.sleep(10000);
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
-        }, "thread1");
-        Thread.sleep(500);
-        new Thread(()->{
-            try {
-                testLock.tryLock(1000, TimeUnit.SECONDS);
-                System.out.println(testLock.remainTimeToLive());
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
-        }, "thread2").start();
+//        new Thread(()->{
+//            int cnt = 20;
+//            while(true){
+//                if(cnt <= 0){
+//                    testLock.forceUnlock();
+//                }
+//                System.out.println(testLock.remainTimeToLive());
+//                try {
+//                    Thread.sleep(1000);
+//                } catch (InterruptedException e) {
+//                    throw new RuntimeException(e);
+//                }
+//                cnt--;
+//            }
+//        }).start();
+        String a = "";
 
-        new Thread(()->{
-            int cnt = 20;
-            while(true){
-                if(cnt <= 0){
-                    testLock.forceUnlock();
-                }
-                System.out.println(testLock.remainTimeToLive());
-                try {
-                    Thread.sleep(1000);
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
-                }
-                cnt--;
-            }
-        }).start();
-        Thread.sleep(321000);
+        testLock.tryLock(100000, TimeUnit.SECONDS);
+        testLock.unlock();
     }
 }
